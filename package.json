@@ -1,0 +1,19 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Back-end for Web Dev IQ app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidAndreww/webDevIQ-backEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidAndreww/webDevIQ-backEnd/issues"
+  },
+  "homepage": "https://github.com/DavidAndreww/webDevIQ-backEnd#readme"
+}
