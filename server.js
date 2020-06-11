@@ -1,14 +1,14 @@
-const express = require('express')
-const colors = require('colors')
+const express = require("express");
+const app = express();
+const dotenv = require("dotenv").config();
+const cors = require("cors");
+const colors = require("colors");
+const PORT = process.env.PORT;
 
-const app = express()
-const port = 3030;
+app.get("/", (req, res) => {
+  res.send("fresh data here, get it while it's hot!!");
+});
 
-
-app.get('/', (req, res) =>{
-  res.send('fresh data here, get it while it\'s hot')
-})
-
-app.listen(port, ()=>{
-  console.log(`App is running on port ${port}`.blue.bold)
-})
+app.listen(PORT, () => {
+  console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT.yellow}`.blue.bold);
+});
