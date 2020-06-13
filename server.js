@@ -6,6 +6,7 @@ const colors = require("colors");
 const PORT = process.env.PORT || 3030;
 
 const userRouter = require('./routes/userRouter')
+const questionsRouter = require('./routes/questionsRouter')
 
 app.use(express.json());
 // app.use(cors())
@@ -16,6 +17,7 @@ let corsOptions = {
 }
 
 app.use('/', userRouter)
+app.use('/questions', questionsRouter)
 
 app.listen(PORT, () => {
   console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT.yellow}`.blue.bold);
