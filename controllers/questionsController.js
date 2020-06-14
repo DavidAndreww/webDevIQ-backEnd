@@ -1,5 +1,6 @@
+const data = require('../dummyData')
 const getQuestions = (req, res) => {
-    res.send('here are your questions')
+    res.json(data)
 }
 
 module.exports = { getQuestions }
