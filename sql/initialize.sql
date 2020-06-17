@@ -5,9 +5,9 @@ CREATE TABLE users(
     username VARCHAR(255),
     email VARCHAR(255),
     _password VARCHAR(255,
-    attempts INT NOT NULL,
+    totalAttempts INT NOT NULL,
     correctAttempts INT NOT NULL,
-    corectQuestions VARCHAR(255),
+    corectlyAnswered VARCHAR(255),
     PRIMARY KEY (id)
 );
 
