@@ -1,4 +1,4 @@
-const mysql = require()
+const mysql = require('mysql')
 
 class Connection {
     constructor() {
@@ -6,10 +6,10 @@ class Connection {
         console.log('creating MySQL connection...'.blue.bold)
         this.pool = mysql.createPool({
           connectionLimit: 100,
-          host: '',
-          user: 'root',
-          password: '',
-          database: 'admin',
+          host: '104.54.208.47',
+          user: 'oberthewhat',
+          password: 'ajwo0416',
+          database: 'deviq',
           // port: 3306
         })
   

@@ -12,7 +12,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE reactQuestions (
-    id INTO NOT NULL,
+    id INT NOT NULL,
     question VARCHAR(255),
     options VARCHAR(1000),
     answer VARCHAR(255),
@@ -22,7 +22,7 @@ CREATE TABLE reactQuestions (
 );
 
 CREATE TABLE reduxQuestions (
-    id INTO NOT NULL,
+    id INT NOT NULL,
     question VARCHAR(255),
     options VARCHAR(1000),
     answer VARCHAR(255),
@@ -32,7 +32,7 @@ CREATE TABLE reduxQuestions (
 );
 
 CREATE TABLE vanillaJSQuestions (
-    id INTO NOT NULL,
+    id INT NOT NULL,
     question VARCHAR(255),
     options VARCHAR(1000),
     answer VARCHAR(255),
