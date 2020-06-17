@@ -3,12 +3,13 @@ const app = express();
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 const colors = require("colors");
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 
 const userRouter = require('./routes/userRouter')
 const questionsRouter = require('./routes/questionsRouter')
 
 app.use(express.json());
+app.use(express.static('public'))
 // app.use(cors())
 
 let corsOptions = {
@@ -16,6 +17,7 @@ let corsOptions = {
   optionsSuccessStatus: 200
 }
 
+// app.use(express.static())
 app.use('/', userRouter)
 app.use('/questions', questionsRouter)
 
