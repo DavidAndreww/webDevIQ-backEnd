@@ -1,4 +1,4 @@
-module.exports = [
+const data = [
     {
         id: 1,
         genre: "Javascript",
@@ -16,3 +16,14 @@ module.exports = [
         resource: 'http://www.google.com'
     },
 ]
+
+const users = [
+    {
+        userId: 1, 
+        totalAttempts: 251, 
+        correctAttempts: 179,
+        correctlyAnswered: [1, 13, 25, 27] // individual question IDs
+    }
+]
+
+module.exports = { data, users }

@@ -1,4 +1,4 @@
-const data = require('../dummyData')
+const { data } = require('../dummyData')
 const getQuestions = (req, res) => {
     res.json(data)
 }
