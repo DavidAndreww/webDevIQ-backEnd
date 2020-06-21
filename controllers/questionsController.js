@@ -5,15 +5,17 @@ const sqlErrorHandler = require('../sql/errorHandler');
 
 const getQuestions = (req, res) => {
     let { questions } = req.body;
-    let totalQs = questions.length;
-    // res.json({questions})
+    let queryLimit = Math.round(Math.ceil(10/questions.length))
+    console.log(limit)
+    res.json({questions})
+    
 
-    pool.query(
-        `SELECT * FROM questions LIMIT 3`, (err, results) => {
-            if (err) return sqlErrorHandler(res, err)
-            res.json({ data: results })
-        }
-    )
+    // pool.query(
+    //     `SELECT * FROM questions WHERE genre=`` LIMIT ${queryLimit}`, (err, results) => {
+    //         if (err) return sqlErrorHandler(res, err)
+    //         res.json(results)
+    //     }
+    // )
 }
 
 module.exports = { getQuestions }
