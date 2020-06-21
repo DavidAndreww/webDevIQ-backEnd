@@ -4,11 +4,12 @@ const { sqlErrorhandler } = require('../sql/errorHandler');
 const sqlErrorHandler = require('../sql/errorHandler');
 
 const getQuestions = (req, res) => {
-    let { id } = req.body;
-    console.log(id)
+    let { questions } = req.body;
+    let totalQs = questions.length;
+    // res.json({questions})
 
     pool.query(
-        `SELECT * FROM questions WHERE id=${id}`, (err, results) => {
+        `SELECT * FROM questions LIMIT 3`, (err, results) => {
             if (err) return sqlErrorHandler(res, err)
             res.json({ data: results })
         }
