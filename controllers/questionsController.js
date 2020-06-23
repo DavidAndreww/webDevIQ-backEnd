@@ -1,10 +1,9 @@
 const { data } = require('../dummyData')
 const pool = require('../sql/connection')
 const { sqlErrorhandler } = require('../sql/errorHandler');
-const sqlErrorHandler = require('../sql/errorHandler');
-const { query } = require('express');
+const sqlErrorHandler = require('../sql/errorHandler');;
 
-function getSQLStatement(questions) {
+function customSQLStatement(questions) {
     let syntax;
     switch (questions.length) {
         case 1:
@@ -33,7 +32,7 @@ const getQuestions = (req, res) => {
     let { questions } = req.body;
     let queryLimit = Math.round(Math.ceil(10 / questions.length))
     pool.query(
-        getSQLStatement(questions), (err, results) => {
+        customSQLStatement(questions), (err, results) => {
             if (err) return sqlErrorHandler(res, err)
             res.send(trimResults(results))
         }
