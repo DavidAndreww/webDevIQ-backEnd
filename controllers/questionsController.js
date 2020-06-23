@@ -1,4 +1,3 @@
-const { data } = require('../dummyData')
 const pool = require('../sql/connection')
 const { sqlErrorhandler } = require('../sql/errorHandler');
 const sqlErrorHandler = require('../sql/errorHandler');;
