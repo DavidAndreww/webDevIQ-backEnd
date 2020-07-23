@@ -13,7 +13,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE questions (
-    id INT,
+    question_id INT NOT NULL AUTO_INCREMENT,
     genre VARCHAR(255),
     question VARCHAR(255),
     options VARCHAR(1000),
@@ -23,10 +23,14 @@ CREATE TABLE questions (
 );
 
 CREATE TABLE resources (
-    id INT,
+    resource_id INT NOT NULL AUTO_INCREMENT,
+    question_id INTO NOT NULL,
     heading VARCHAR(255),
     _description VARCHAR(255),
     href VARCHAR(255)
+    PRIMARY KEY(resource_id)
+    FOREIGN KEY(question_id)
+    REFERENCES questions (question_id)
 )
 
 INSERT INTO questions
