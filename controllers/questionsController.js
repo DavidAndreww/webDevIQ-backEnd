@@ -22,8 +22,8 @@ function customSQLStatement(questions) {
     }
     return syntax
 }
-function trimResults(results){
-    if (results.length > 10) results.splice(10)
+function trimResults(results, num){
+    if (results.length > num) results.splice(num)
     return results
 }
 
@@ -33,7 +33,7 @@ const getQuestions = (req, res) => {
     pool.query(
         customSQLStatement(questions), (err, results) => {
             if (err) return sqlErrorHandler(res, err)
-            res.send(trimResults(results))
+            res.send(trimResults(results, 10))
         }
     )
 

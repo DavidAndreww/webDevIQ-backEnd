@@ -22,6 +22,13 @@ CREATE TABLE questions (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE resources (
+    id INT,
+    heading VARCHAR(255),
+    _description VARCHAR(255),
+    href VARCHAR(255)
+)
+
 INSERT INTO questions
     (id, genre, question, answer, options, resources)
 VALUES
