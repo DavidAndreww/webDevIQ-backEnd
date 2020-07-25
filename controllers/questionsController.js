@@ -29,6 +29,7 @@ function trimResults(results, num){
 
 const getQuestions = (req, res) => {
     let { questions } = req.body;
+    console.log(questions)
     let queryLimit = Math.round(Math.ceil(10 / questions.length))
     pool.query(
         customSQLStatement(questions), (err, results) => {
@@ -36,7 +37,6 @@ const getQuestions = (req, res) => {
             res.send(trimResults(results, 10))
         }
     )
-
 }
 
 module.exports = { getQuestions }
