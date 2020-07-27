@@ -10,7 +10,7 @@ const questionsRouter = require('./routes/questionsRouter')
 
 app.use(express.json());
 app.use(express.static('public'))
-// app.use(cors())
+app.use(cors())
 
 let corsOptions = {
   origin: 'http://localhost:3030', // whatever our domain is

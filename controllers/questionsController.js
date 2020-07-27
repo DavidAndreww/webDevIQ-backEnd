@@ -36,7 +36,7 @@ const getQuestions = (req, res) => {
     pool.query(
         customSQLStatement(questions), (err, results) => {
             if (err) return sqlErrorHandler(res, err)
-            res.send(trimResults(results, 10))
+            res.send(trimResults(results, 10));
         }
     )
 }
