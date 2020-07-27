@@ -2,6 +2,7 @@ const pool = require('../sql/connection')
 const { sqlErrorhandler } = require('../sql/errorHandler');
 const sqlErrorHandler = require('../sql/errorHandler');;
 
+// returns SQL Statement based on number of question genres requested
 function customSQLStatement(questions) {
     let syntax;
     switch (questions.length) {
@@ -22,6 +23,7 @@ function customSQLStatement(questions) {
     }
     return syntax
 }
+// limits questions returned to whatever number is passed as 'num'
 function trimResults(results, num){
     if (results.length > num) results.splice(num)
     return results
