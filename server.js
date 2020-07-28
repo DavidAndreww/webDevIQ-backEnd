@@ -24,7 +24,7 @@ let corsOptions = {
   optionsSuccessStatus: 200
 }
 // enables cors requests for options stated in 
-app.use(cors(corsOptions))
+app.use(cors())
 //
 
 // route for user login/signup controllers
