@@ -1,6 +1,9 @@
+// creates top level Express function
 const express = require('express')
+// creates new Router object
 const router = express.Router()
-const { getQuestions } = require('../controllers/questionsController')
+// import questions controller
+const { getQuestions } = require('../controllers/quizController')
 
 // gets list of questions to display at start of quiz attempt
 router.post('/', getQuestions)
@@ -9,5 +12,5 @@ router.put('/update')
 // return 3 resources based on incorrect questions at end of quiz attempt
 router.post('/resources')
 
-
+// export router for use in Server.js
 module.exports = router;

@@ -30,7 +30,7 @@ app.use(cors(corsOptions))
 // route for user login/signup controllers
 app.use('/', userRouter)
 // route to handle quiz related controllers
-app.use('/questions', quizRouter)
+app.use('/quiz', quizRouter)
 
 // UNIX socket listening for connections on path localhost:port
 app.listen(PORT, () => {
