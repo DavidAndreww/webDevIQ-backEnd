@@ -7,7 +7,7 @@ const sqlErrorHandler = require("../sql/errorHandler");
 const getQuestions = (req, res) => {
   // variable holding array of question types being requested 
   let { questions } = req.body;
-  console.log('questionsController: ', questions);
+  console.log('questionsController: '.yellow, questions);
   // 
   pool.query(customSQLStatement(questions), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
