@@ -6,21 +6,26 @@ const colors = require("colors");
 const PORT = process.env.PORT || 3030;
 
 const userRouter = require('./routes/userRouter')
-const questionsRouter = require('./routes/questionsRouter')
+const quizRouter = require('./routes/quizRouter')
 
+// parses incoming requests with JSON payloads
 app.use(express.json());
+// serves static files (HTML/Front End)
 app.use(express.static('public'))
+// 
 app.use(cors())
-
+//
 let corsOptions = {
   origin: 'http://localhost:3030', // whatever our domain is
   optionsSuccessStatus: 200
 }
 
-// app.use(express.static())
+// route for user login/signup controllers
 app.use('/', userRouter)
-app.use('/questions', questionsRouter)
+// route 
+app.use('/questions', quizRouter)
 
+// 
 app.listen(PORT, () => {
   console.log(`App is running in ${process.env.NODE_ENV} mode on port ${PORT.yellow}`.blue.bold);
 });
