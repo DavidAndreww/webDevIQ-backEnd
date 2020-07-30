@@ -49,7 +49,7 @@ const getResources = (req, res) => {
   let resToQuery = generateRandomResources(resources);
 
 
-  pool.query(customSQLResourceStatement(resToQuery), (err, results) => {
+  pool.query(`SELECT * FROM resources WHERE question_id IN (2)`, (err, results) => {
     if (err) return sqlErrorHandler(res, err);
     res.send(res);
   });
