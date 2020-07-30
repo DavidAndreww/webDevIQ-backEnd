@@ -1,4 +1,6 @@
+//
 const pool = require("../sql/connection");
+// SQL error handler
 const { sqlErrorhandler } = require("../sql/errorHandler");
 const sqlErrorHandler = require("../sql/errorHandler");
 
@@ -7,8 +9,7 @@ const sqlErrorHandler = require("../sql/errorHandler");
 const getQuestions = (req, res) => {
   // variable holding array of question types being requested 
   let { questions } = req.body;
-  console.log('questionsController: '.yellow, questions);
-  // 
+  // get questions based off of users question types & quiz length 
   pool.query(customSQLStatement(questions), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
     res.send(trimResults(results, 10));
