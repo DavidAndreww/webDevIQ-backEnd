@@ -7,15 +7,14 @@ const sqlErrorHandler = require("../sql/errorHandler");
 // METHOD: POST
 // PATH: 'localhost:3030/quiz/
 const getQuestions = (req, res) => {
-  // variable holding array of question types being requested 
+  // variable holding array of question types being requested
   let { questions } = req.body;
-  // get questions based off of users question types & quiz length 
+  // get questions based off of users question types & quiz length
   pool.query(customSQLStatement(questions), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
     res.send(trimResults(results, 10));
   });
 };
-
 // returns SQL Statement based on number of question genres requested
 function customSQLStatement(questions) {
   let syntax;
@@ -43,4 +42,28 @@ function trimResults(results, num) {
   return results;
 }
 
-module.exports = { getQuestions };
+// METHOD: POST
+// PATH: 'localhost:3030/quiz/resources
+const getResources = (req, res) => {
+  let { resources } = req.body;
+  let resToQuery = generateRandomResources(resources);
+
+  res.send(resToQuery);
+};
+
+function generateRandomResources(array) {
+  if (array.length <= 3) {
+    return array;
+  }
+
+  const resources = [];
+  while (resources.length < 3) {
+    let val = array[Math.floor(Math.random() * Math.floor(array.length))];
+    if (!resources.includes(val)) {
+      resources.push(val);
+    }
+  }
+  return resources;
+}
+
+module.exports = { getQuestions, getResources };
