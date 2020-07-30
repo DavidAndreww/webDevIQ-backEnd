@@ -2,7 +2,6 @@
 const pool = require("../sql/connection");
 // SQL error handler
 const { sqlErrorhandler } = require("../sql/errorHandler");
-const sqlErrorHandler = require("../sql/errorHandler");
 
 // METHOD: POST
 // PATH: 'localhost:3030/quiz/
