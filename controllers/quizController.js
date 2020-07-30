@@ -10,13 +10,13 @@ const getQuestions = (req, res) => {
   // variable holding array of question types being requested
   let { questions } = req.body;
   // get questions based off of users question types & quiz length
-  pool.query(customSQLStatement(questions), (err, results) => {
+  pool.query(customSQLQuestionStatement(questions), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
     res.send(trimResults(results, 10));
   });
 };
 // returns SQL Statement based on number of question genres requested
-function customSQLStatement(questions) {
+function customSQLQuestionStatement(questions) {
   let syntax;
   switch (questions.length) {
     case 1:
@@ -48,14 +48,17 @@ const getResources = (req, res) => {
   let { resources } = req.body;
   let resToQuery = generateRandomResources(resources);
 
-  res.send(resToQuery);
+
+  pool.query(customSQLResourceStatement(resToQuery), (err, results) => {
+    if (err) return sqlErrorHandler(res, err);
+    res.send(res);
+  });
 };
 
 function generateRandomResources(array) {
   if (array.length <= 3) {
     return array;
   }
-
   const resources = [];
   while (resources.length < 3) {
     let val = array[Math.floor(Math.random() * Math.floor(array.length))];
@@ -64,6 +67,25 @@ function generateRandomResources(array) {
     }
   }
   return resources;
+}
+
+function customSQLResourceStatement(questions) {
+  let syntax;
+  switch (questions.length) {
+    case 1:
+      syntax = `SELECT * FROM resources WHERE question_id IN (${questions[0]})`;
+      break;
+    case 2:
+      syntax = `SELECT * FROM resources WHERE question_id IN (${questions[0]}, ${questions[1]})`
+      break;
+    case 3:
+      syntax = `SELECT * FROM resources WHERE question_id IN (${questions[0]}, ${questions[1]}, ${questions[2]})`
+      break;
+    default:
+      "";
+  }
+  console.log('SYNTAX: ',syntax)
+  return syntax;
 }
 
 module.exports = { getQuestions, getResources };
