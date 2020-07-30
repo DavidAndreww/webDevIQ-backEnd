@@ -46,16 +46,16 @@ function trimResults(results, num) {
 // PATH: 'localhost:3030/quiz/resources
 const getResources = (req, res) => {
   let { resources } = req.body;
-  let resToQuery = generateRandomResources(resources);
+  let arrOfResourceIds = threeRandomResources(resources);
 
 
-  pool.query(customSQLResourceStatement(resToQuery), (err, results) => {
+  pool.query(customSQLResourceStatement(arrOfResourceIds), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
     res.send(results);
   });
 };
 
-function generateRandomResources(array) {
+function threeRandomResources(array) {
   if (array.length <= 3) {
     return array;
   }
@@ -84,7 +84,6 @@ function customSQLResourceStatement(questions) {
     default:
       "";
   }
-  console.log('SYNTAX: ',syntax)
   return syntax;
 }
 
