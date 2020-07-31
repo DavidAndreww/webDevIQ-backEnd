@@ -46,11 +46,9 @@ function trimResults(results, num) {
 const getResources = (req, res) => {
   let { resources } = req.body;
   let arrOfResourceIds = threeRandomResources(resources);
-
-
   pool.query(customSQLResourceStatement(arrOfResourceIds), (err, results) => {
     if (err) return sqlErrorHandler(res, err);
-    res.send(results);
+    res.send(trimResults(results, 3));
   });
 };
 
