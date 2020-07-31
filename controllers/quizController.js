@@ -42,7 +42,7 @@ function trimResults(results, num) {
 }
 
 // METHOD: POST
-// PATH: 'localhost:3030/quiz/resources
+// PATH: 'localhost:3030/quiz/resources'
 const getResources = (req, res) => {
   let { resources } = req.body;
   let arrOfResourceIds = threeRandomResources(resources);
