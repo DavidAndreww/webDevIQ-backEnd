@@ -3,7 +3,8 @@ const express = require('express')
 // creates new Router object
 const router = express.Router()
 // import questions controller
-const { getQuestions, getResources } = require('../controllers/quizController')
+const getQuestions = require('../controllers/quizController/getQuestions')
+const getResources = require('../controllers/quizController/getResources')
 
 // gets list of questions to display at start of quiz attempt
 router.post('/', getQuestions)
