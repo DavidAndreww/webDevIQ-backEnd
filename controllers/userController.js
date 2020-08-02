@@ -14,6 +14,8 @@ const signup = (req, res) => {
   res.json({ newUser: { name: name, email: email } });
 };
 
+// METHOD: PUT
+// PATH: 'localhost:3030/update'
 const updateAttempts = (req, res) => {
   const { totalAttempts, correctAttempts, id } = req.body;
 
