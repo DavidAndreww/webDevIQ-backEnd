@@ -2,6 +2,11 @@ const pool = require("../sql/connection");
 // SQL error handler
 const { sqlErrorhandler } = require("../sql/errorHandler");
 
+const signup = (req, res) => {
+  const { name, email } = req.body;
+  res.json({ newUser: { name: name, email: email } });
+};
+
 const login = (req, res) => {
   const { id, name, email } = req.body;
   console.log(id);
@@ -9,10 +14,6 @@ const login = (req, res) => {
   res.json({ loggedIn: user });
 };
 
-const signup = (req, res) => {
-  const { name, email } = req.body;
-  res.json({ newUser: { name: name, email: email } });
-};
 
 // METHOD: PUT
 // PATH: 'localhost:3030/update'
